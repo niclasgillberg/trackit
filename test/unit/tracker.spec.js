@@ -22,7 +22,7 @@ describe('the Tracker', () => {
     });
   });
 
-  describe('starting a new task', () => {
+  describe('starting a new task when current is in progress', () => {
     var startTime;
 
     beforeEach(() => {
@@ -52,6 +52,41 @@ describe('the Tracker', () => {
     it('has placed the old current task in the finished list', () => {
       expect(tracker.finishedTasks.length).toBe(1);
       expect(tracker.finishedTasks[0].title).toEqual('Old task');
+    });
+  });
+
+  describe('starting a new task when no task is in progress', () => {
+    var startTime;
+    beforeEach(() => {
+      var oldDate = Date;
+      spyOn(window, 'Date').and.callFake(() => {
+        startTime = new oldDate('2015-01-01 00:00:00');
+        return startTime;
+      });
+
+      startTime = new Date();
+      tracker.startTask();
+    });
+
+    it('does not add anything to the finished list', () => {
+      expect(tracker.finishedTasks.length).toBe(0);
+    });
+  });
+
+  describe('stopping the current task', () => {
+    beforeEach(() => {
+      tracker.currentTask = new Task('Started task', 'stopping');
+      tracker.currentTask.startTime = new Date('2015-01-01 01:00:00');
+
+      tracker.stopTask();
+    });
+
+    it('adds the current task to the finished list', () => {
+      expect(tracker.finishedTasks[0].title).toBe('Started task');
+    });
+
+    it('resets the current task', () => {
+      expect(tracker.currentTask).toBeUndefined();
     });
   });
 

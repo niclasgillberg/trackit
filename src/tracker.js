@@ -9,9 +9,10 @@ export class Tracker{
   }
 
   startTask() {
-    if(this.currentTask)
+    if(this.currentTask){
       this.currentTask.stop();
-    this.finishedTasks.push(this.currentTask);
+      this.finishedTasks.push(this.currentTask);
+    }
     this.currentTask = this.newTask;
     this.newTask = new Task();
     this.currentTask.start();
@@ -21,5 +22,11 @@ export class Tracker{
     this.newTask.title = task.title;
     this.newTask.category = task.category;
     this.startTask();
+  }
+
+  stopTask() {
+    this.currentTask.stop();
+    this.finishedTasks.push(this.currentTask);
+    this.currentTask = void 0;
   }
 }
