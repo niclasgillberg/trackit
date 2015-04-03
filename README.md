@@ -2,7 +2,7 @@
 
 TrackIt makes it easy to keep track of all the tasks one has done during a day, including how long the task was in progress.
 
-*Build using [Aurelia](http://www.aurelia.io/)*
+*Built using [Aurelia](http://www.aurelia.io/)*
 
 ## Running The App
 
