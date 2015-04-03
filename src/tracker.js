@@ -16,4 +16,10 @@ export class Tracker{
     this.newTask = new Task();
     this.currentTask.start();
   }
+
+  restartTask(task) {
+    this.newTask.title = task.title;
+    this.newTask.category = task.category;
+    this.startTask();
+  }
 }

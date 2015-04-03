@@ -26,16 +26,16 @@ describe('the Tracker', () => {
     var startTime;
 
     beforeEach(() => {
-      var oldDateNow = Date.now;
-      spyOn(Date, 'now').and.callFake(() => {
-        startTime = oldDateNow();
+      var oldDate = Date;
+      spyOn(window, 'Date').and.callFake(() => {
+        startTime = new oldDate('2015-01-01 00:00:00');
         return startTime;
       });
 
       tracker.currentTask = new Task('Old task', 'Old category');
       tracker.newTask.title = 'Creating some stuff';
       tracker.newTask.category = 'Development';
-      startTime = Date.now();
+      startTime = new Date();
       tracker.startTask();
     });
 
@@ -46,12 +46,38 @@ describe('the Tracker', () => {
     });
 
     it('has set a start time on the current task', () => {
-      expect(tracker.currentTask.startDate).toEqual(startTime);
+      expect(tracker.currentTask.startTime).toEqual(startTime);
     });
 
     it('has placed the old current task in the finished list', () => {
       expect(tracker.finishedTasks.length).toBe(1);
       expect(tracker.finishedTasks[0].title).toEqual('Old task');
+    });
+  });
+
+  describe('restarting a task', () => {
+    var currentTask, startTime;
+    beforeEach(() => {
+      var oldDate = Date;
+      spyOn(window, 'Date').and.callFake(() => {
+        startTime = new oldDate('2015-01-01 00:00:00');
+        return startTime;
+      });
+
+      var finishedTask = new Task('task', 'category');
+      finishedTask.startTime = new Date('2015-01-01 00:00:00');
+      finishedTask.stopTime = new Date('2015-01-01 01:00:00');
+
+      tracker.finishedTasks = [finishedTask];
+      tracker.currentTask = new Task('Current');
+      tracker.currentTask.startTime = new Date('2015-01-01 01:00:00');
+
+      tracker.restartTask(finishedTask);
+    });
+
+    it('stops the current task', () => {
+      expect(tracker.finishedTasks[1].title).toBe('Current');
+      expect(tracker.finishedTasks[1].stopTime).toBeDefined();
     });
   });
 });
