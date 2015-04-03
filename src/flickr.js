@@ -15,8 +15,4 @@ export class Flickr{
       this.images = response.content.items;
     });
   }
-
-  canDeactivate(){
-    return confirm('Are you sure you want to leave?');
-  }
 }

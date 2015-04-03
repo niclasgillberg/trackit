@@ -15,7 +15,12 @@ module.exports = function(config) {
     jspm: {
       // Edit this to your needs
       loadFiles: ['src/**/*.js', 'test/unit/**/*.js']
-    },
+  },
+
+  proxies: {
+    '/base/dist/src': '/base/src',
+    '/base/dist/test': '/base/test'
+  },
 
 
     // list of files / patterns to load in the browser
@@ -32,14 +37,14 @@ module.exports = function(config) {
     preprocessors: {
       'test/**/*.js': ['babel'],
       'src/**/*.js': ['babel']
-    },
-    'babelPreprocessor': {
+  },
+  'babelPreprocessor': {
       options: {
         sourceMap: 'inline',
         modules: 'system',
         moduleIds: false
-      }
-    },
+    }
+},
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -66,11 +71,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['ChromeCanary'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
-  });
+});
 };

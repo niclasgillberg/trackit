@@ -1,0 +1,82 @@
+%navbar-align {
+  line-height: $navbar-height;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  padding-left: $margin-default * 3;
+  padding-right: $margin-default * 3;
+  height: $navbar-height;
+  background: hsl(0,0,20);
+
+  a {
+    color: hsl(0,0,70);
+  }
+}
+
+.navbar-brand {
+  @extend %navbar-align;
+
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: inline-block;
+  margin: 0;
+  margin-left: $margin-default * 3;
+  padding: 0;
+  list-style: none;
+
+  .nav-item {
+    display: inline-block;
+    margin: 0 $margin-default * 2;
+  }
+}
+
+.navbar-loader {
+  margin: 0;
+  margin-left: -($margin-default * 3);
+  margin-top: -($margin-default);
+  padding: 0;
+  list-style: none;
+
+  .loader {
+    $size: $margin-default / 2;
+    position: relative;
+    height: $size;
+    text-align: center;
+
+    > div {
+      width: $size;
+      height: $size;
+      background-color: $accent-color;
+
+      position: relative;
+      top: -($margin-default) * 1.25;
+      border-radius: 100%;
+      display: inline-block;
+      animation: bouncedelay 1.4s infinite ease-in-out;
+      /* Prevent first frame from flickering when animation starts */
+      animation-fill-mode: both;
+    }
+
+    $iterations: 7;
+    @for $i from 1 through $iterations {
+      :nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * 0.16}s;
+      }
+    }
+  }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0.0);
+  } 40% { 
+    transform: scale(1.0);
+  }
+}

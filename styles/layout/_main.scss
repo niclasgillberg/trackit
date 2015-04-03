@@ -1,0 +1,13 @@
+.page-host {
+  $border: 1px solid hsl(0,0,70);
+  position: relative;
+  margin: 0 $margin-default * 2;
+  padding: $margin-default;
+  min-height: 100vh;
+  padding-top: $navbar-height;
+  border: {
+    left: $border;
+    right: $border;
+  }
+  background: hsl(0,0,100);
+}

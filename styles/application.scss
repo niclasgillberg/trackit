@@ -1,3 +1,10 @@
+@import "./config/_variables";
+
+@import "./config/_base";
 
 @import "./aurelia";
+
+@import "./layout/_main";
+
 @import "./components/_splashscreen";
+@import "./components/_navbar";

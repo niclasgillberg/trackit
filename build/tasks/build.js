@@ -8,6 +8,8 @@ var paths = require('../paths');
 var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var sass = require('gulp-sass');
+var reload = require('browser-sync').reload;
+var autoprefixer = require('gulp-autoprefixer');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -32,10 +34,12 @@ gulp.task('build-html', function () {
 
 // compiles the styles from SCSS to CSS
 gulp.task('build-styles', function(){
-  gulp.src('styles/application.scss')
+  return gulp.src('styles/application.scss')
     .pipe(plumber())
     .pipe(sass())
-    .pipe(gulp.dest('styles'));
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('styles'))
+    .pipe(reload({stream: true}));
 });
 
 // this task calls the clean task (located

@@ -1,0 +1,11 @@
+<template>
+  <section>
+    <h2>${heading}</h2>
+
+    <form role="form" submit.delegate="welcome()">
+      <input type="text" value.bind="firstName" class="form-control" id="fn" placeholder="What's your task?">
+        <input type="text" value.bind="lastName" class="form-control" id="ln" placeholder="Category?">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </section>
+</template>
