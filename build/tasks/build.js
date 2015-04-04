@@ -22,14 +22,14 @@ gulp.task('build-system', function () {
     .pipe(sourcemaps.init())
     .pipe(to5(assign({}, compilerOptions, {modules:'system'})))
     .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/' + paths.root }))
-    .pipe(gulp.dest(paths.output));
+    .pipe(gulp.dest(paths.output))
 });
 
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
-    .pipe(gulp.dest(paths.output));
+    .pipe(gulp.dest(paths.output))
 });
 
 // compiles the styles from SCSS to CSS
