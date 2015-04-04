@@ -14,6 +14,7 @@ export class Task {
   }
 
   get duration() {
-    return (this.stopTime - this.startTime) / 1000;
+    var stopTime = this.stopTime || new Date();
+    return Math.round((stopTime - this.startTime) / 1000);
   }
 }

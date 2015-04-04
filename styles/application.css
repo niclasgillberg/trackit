@@ -78,7 +78,7 @@ body {
     .navbar-loader .loader > div {
       width: 4px;
       height: 4px;
-      background-color: #ffd500;
+      background-color: #ccaa00;
       position: relative;
       top: -10px;
       border-radius: 100%;

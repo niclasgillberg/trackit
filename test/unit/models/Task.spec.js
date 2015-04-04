@@ -34,7 +34,7 @@ describe('the Task', () => {
     });
   });
 
-  describe('starting a task', () => {
+  describe('when starting a task', () => {
     var startTime;
     beforeEach(() => {
       var oldDate = Date;
@@ -53,7 +53,7 @@ describe('the Task', () => {
     });
   });
 
-  describe('stopping a task', () => {
+  describe('when stopping a task', () => {
     var startTime, stopTime;
     beforeEach(() => {
       var oldDate = Date;
@@ -76,6 +76,23 @@ describe('the Task', () => {
     it('has a duration', () => {
       expect(task.duration).toBeDefined();
       expect(task.duration).toBe(3600);
+    });
+  });
+
+  describe('when task is running', () => {
+    
+    beforeEach(() => {
+      var oldDate = Date;
+      spyOn(window, 'Date').and.callFake(() => {
+        return new oldDate('2015-01-01 00:01:00:001');
+      });
+
+      task = new Task('Running task');
+      task.startTime = new oldDate('2015-01-01 00:00:00');
+    });
+
+    it('has a duration', () => {
+      expect(task.duration).toBe(60);
     });
   });
 });

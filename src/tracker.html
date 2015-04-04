@@ -9,7 +9,7 @@
     </form>
 
     <h3 if.bind="currentTask">
-      ${currentTask.title} (${currentTask.category})
+      ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration}
     </h3>
     <ul if.bind="finishedTasks.length">
       <li repeat.for="task of finishedTasks">
