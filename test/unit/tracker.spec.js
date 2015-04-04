@@ -73,6 +73,19 @@ describe('the Tracker', () => {
     });
   });
 
+  describe('starting a new task without title', () => {
+    beforeEach(() => {
+      tracker.newTask.title = '';
+      tracker.currentTask = void 0;
+
+      tracker.startTask();
+    });
+
+    it('does not start the task', () => {
+      expect(tracker.currentTask).toBeUndefined();
+    });
+  });
+
   describe('stopping the current task', () => {
     beforeEach(() => {
       tracker.currentTask = new Task('Started task', 'stopping');

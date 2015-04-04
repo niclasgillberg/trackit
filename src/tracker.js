@@ -9,6 +9,9 @@ export class Tracker{
   }
 
   startTask() {
+    if(!this.newTask.title)
+      return;
+
     if(this.currentTask){
       this.currentTask.stop();
       this.finishedTasks.push(this.currentTask);

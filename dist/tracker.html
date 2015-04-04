@@ -2,15 +2,15 @@
   <section>
     <h2>${heading}</h2>
 
-    <form role="form" submit.delegate="startTask()">
-      <input type="text" value.bind="newTask.title" class="form-control" id="title" placeholder="What's your task?">
-        <input type="text" value.bind="newTask.category" class="form-control" id="category" placeholder="Category?">
-      <button type="submit" class="btn btn-default">Submit</button>
+    <form class="new-task" submit.delegate="startTask()" role="form">
+    <input type="text" value.bind="newTask.title" class="form-control new-task-title" placeholder="What's your task?">
+      <input type="text" value.bind="newTask.category" class="form-control new-task-category" placeholder="Category?">
+      <button type="submit" class="btn new-task-btn">Submit</button>
     </form>
-
-    <h3 if.bind="currentTask">
+    
+    <div class="current-task" if.bind="currentTask">
       ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration}
-    </h3>
+    </div>
     <ul if.bind="finishedTasks.length">
       <li repeat.for="task of finishedTasks">
         ${task.title} (${task.category}) -> ${task.duration}
