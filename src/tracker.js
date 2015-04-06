@@ -14,7 +14,7 @@ export class Tracker{
 
     if(this.currentTask){
       this.currentTask.stop();
-      this.finishedTasks.push(this.currentTask);
+      this.addFinishedTask(this.currentTask);
     }
     this.currentTask = this.newTask;
     this.newTask = new Task();
@@ -29,7 +29,12 @@ export class Tracker{
 
   stopTask() {
     this.currentTask.stop();
-    this.finishedTasks.push(this.currentTask);
+    this.addFinishedTask(this.currentTask);
     this.currentTask = void 0;
+  }
+
+  addFinishedTask(task){
+    this.finishedTasks.push(task);
+    this.finishedTasks = this.finishedTasks.slice();
   }
 }

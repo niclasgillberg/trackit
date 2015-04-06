@@ -10,9 +10,10 @@
     
     <div class="current-task" if.bind="currentTask">
       ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration}
+      <button type="button" class="btn btn-danger" click.delegate="stopTask()">Stop it!</button>
     </div>
     <ul if.bind="finishedTasks.length">
-      <li repeat.for="task of finishedTasks">
+      <li repeat.for="task of finishedTasks | sort:'startTime':'number':'descending'">
         ${task.title} (${task.category}) -> ${task.duration}
       </li>
     </ul>

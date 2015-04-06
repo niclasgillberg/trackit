@@ -26,11 +26,21 @@ body {
   background: white; }
 
 .btn {
-  border: none;
-  border-radius: 0;
+  border: 1px solid #f0b400;
   background: #ffbf00;
+  border-radius: 0;
   margin: 0;
   padding: 8px 16px; }
+
+.btn-danger {
+  border: 1px solid #f02800;
+  background: #ff2b00; }
+
+.form-control {
+  padding: 8px;
+  font-size: 1em; }
+  .form-control + .form-control {
+    margin-left: 8px; }
 
 .splash {
   text-align: center;
@@ -148,10 +158,6 @@ body {
   width: 100%;
   padding: 8px;
   border: 1px solid #b3b3b3; }
-  .new-task .form-control {
-    margin: 8px;
-    padding: 8px;
-    font-size: 1em; }
 
 .new-task-title {
   -webkit-box-flex: 3;
@@ -163,7 +169,8 @@ body {
   -webkit-box-flex: 2;
   -webkit-flex-grow: 2;
       -ms-flex-positive: 2;
-          flex-grow: 2; }
+          flex-grow: 2;
+  margin-right: 8px; }
 
 .new-task-btn {
   position: relative;

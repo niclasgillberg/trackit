@@ -4,12 +4,6 @@
   width: 100%;
   padding: $margin-default;
   border: 1px solid hsl(0,0,70);
-
-  .form-control {
-    margin: $margin-default;
-    padding: $margin-default;
-    font-size: 1em;
-  }
 }
 
 .new-task-title {
@@ -18,6 +12,7 @@
 
 .new-task-category {
   flex-grow: 2;
+  margin-right: $margin-default;
 }
 
 .new-task-btn {

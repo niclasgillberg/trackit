@@ -15,6 +15,7 @@ System.config({
     "aurelia-http-client": "github:aurelia/http-client@0.6.0",
     "aurelia-router": "github:aurelia/router@0.6.0",
     "font-awesome": "npm:font-awesome@4.3.0",
+    "moment": "github:moment/moment@2.9.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
     "github:aurelia/binding@0.4.0": {

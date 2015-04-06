@@ -1,7 +1,15 @@
+@mixin button-color($color) {
+  border: 1px solid darken($color, 3%);
+  background: $color;
+}
+
 .btn {
-  border: none;
+  @include button-color($accent-color);
   border-radius: 0;
-  background: $accent-color;
   margin: 0;
   padding: $margin-default $margin-default * 2;
+}
+
+.btn-danger {
+  @include button-color($danger-color);
 }
