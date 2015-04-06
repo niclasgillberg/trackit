@@ -77,6 +77,10 @@ describe('the Task', () => {
       expect(task.duration).toBeDefined();
       expect(task.duration).toBe(3600);
     });
+
+    it('is finished', () => {
+      expect(task.isFinished).toBe(true);
+    });
   });
 
   describe('when task is running', () => {
@@ -93,6 +97,46 @@ describe('the Task', () => {
 
     it('has a duration', () => {
       expect(task.duration).toBe(60);
+    });
+
+    it('is not finished', () => {
+      expect(task.isFinished).toBe(false);
+    });
+  });
+
+  describe('when using the parsing function', () => {
+    var task;
+    beforeEach(() => {
+      var taskProperties = {
+        'id': "2964248c-84a8-40dd-a55d-bddad68bc11a",
+        'title': 'Title',
+        'category': 'Category',
+        'startTime': new Date('2015-01-01 00:00:00'),
+        'stopTime': new Date('2015-01-01 01:00:00').toISOString()
+      };
+
+      task = Task.parse(taskProperties);
+
+    });
+
+    it('sets the correct ID', () => {
+      expect(task.id).toBe("2964248c-84a8-40dd-a55d-bddad68bc11a");
+    });
+
+    it('sets the correct title', () => {
+      expect(task.title).toBe('Title');
+    });
+
+    it('sets the correct category', () => {
+      expect(task.category).toBe('Category');
+    });
+
+    it('sets the correct start time', () => {
+      expect(task.startTime.toISOString()).toBe(new Date('2015-01-01 00:00:00').toISOString());
+    });
+
+    it('sets the correct stop time', () => {
+      expect(task.stopTime.toISOString()).toBe(new Date('2015-01-01 01:00:00').toISOString());
     });
   });
 });

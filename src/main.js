@@ -4,7 +4,8 @@ export function configure(aurelia) {
     .defaultResources()
     .router()
     .eventAggregator()
-    .plugin('./value_converters/index');
+    .plugin('./value_converters/index')
+    .plugin('./providers/storage/index');
 
   aurelia.start().then(a => a.setRoot('app', document.body));
 }

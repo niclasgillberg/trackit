@@ -1,10 +1,40 @@
 import {Tracker} from '../../src/tracker';
 import {Task} from '../../src/models/Task';
 
+class MockTaskService {
+  constructor() {
+    this.tasks = [];
+    this.allLoaded = false;
+    this.finishedLoaded = false;
+    this.currentLoaded = false;
+    this.savedTasks = [];
+  }
+
+  loadAllTasks() {
+    this.allLoaded = true;
+    return this.tasks;
+  }
+
+  loadFinishedTasks() {
+    this.finishedLoaded = true;
+    return this.tasks;
+  }
+
+  getCurrentTask() {
+    this.currentLoaded = true;
+  }
+
+  saveTask(task) {
+    this.savedTasks.push(task);
+  }
+}
+
 describe('the Tracker', () => {
-  var tracker;
+  var tracker,
+      service;
   beforeEach(() => {
-    tracker = new Tracker();
+    service = new MockTaskService();
+    tracker = new Tracker(service);
   });
 
   describe('initial state', () => {
@@ -19,6 +49,14 @@ describe('the Tracker', () => {
     it('has an empty finished tasks list', () => {
       expect(tracker.finishedTasks).toBeDefined();
       expect(tracker.finishedTasks).toEqual([]);
+    });
+
+    it('has fetched finished tasks', () => {
+      expect(service.finishedLoaded).toBe(true);
+    });
+
+    it('has fetched the current task', () => {
+      expect(service.currentLoaded).toBe(true);
     });
   });
 
@@ -53,6 +91,10 @@ describe('the Tracker', () => {
       expect(tracker.finishedTasks.length).toBe(1);
       expect(tracker.finishedTasks[0].title).toEqual('Old task');
     });
+
+    it('has saved the old current task', () => {
+      expect(service.savedTasks[0].title).toBe('Old task');
+    });
   });
 
   describe('starting a new task when no task is in progress', () => {
@@ -64,12 +106,19 @@ describe('the Tracker', () => {
         return startTime;
       });
 
+      tracker.newTask.title = 'Creating some stuff';
+      tracker.newTask.category = 'Development';
+
       startTime = new Date();
       tracker.startTask();
     });
 
     it('does not add anything to the finished list', () => {
       expect(tracker.finishedTasks.length).toBe(0);
+    });
+
+    it('saved the new task', () => {
+      expect(service.savedTasks[0].title).toBe('Creating some stuff');
     });
   });
 

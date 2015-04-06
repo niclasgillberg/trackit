@@ -1,11 +1,13 @@
 import {Task} from './models/Task';
+import {TaskService} from './services/TaskService';
 
 export class Tracker{
-
-  constructor(){
+  static inject() {return [TaskService];}
+  constructor(service){
+    this.service = service;
     this.newTask = new Task();
-    this.currentTask = void 0;
-    this.finishedTasks = [];
+    this.currentTask = service.getCurrentTask();
+    this.finishedTasks = service.loadFinishedTasks();
   }
 
   startTask() {
@@ -19,6 +21,7 @@ export class Tracker{
     this.currentTask = this.newTask;
     this.newTask = new Task();
     this.currentTask.start();
+    this.service.saveTask(this.currentTask);
   }
 
   restartTask(task) {
@@ -36,5 +39,6 @@ export class Tracker{
   addFinishedTask(task){
     this.finishedTasks.push(task);
     this.finishedTasks = this.finishedTasks.slice();
+    this.service.saveTask(task);
   }
 }
