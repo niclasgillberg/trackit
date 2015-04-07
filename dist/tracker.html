@@ -9,7 +9,7 @@
     </form>
     
     <div class="current-task" if.bind="currentTask">
-      ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration | duration:'HH:mm:ss'} (${currentTask.duration})
+      ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration | duration:'HH:mm:ss'}
       <button type="button" class="btn btn-danger" click.delegate="stopTask()">Stop it!</button>
     </div>
     <ul if.bind="finishedTasks.length">
