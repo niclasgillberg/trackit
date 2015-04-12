@@ -1,8 +1,9 @@
 import {StorageBroker} from '../brokers/StorageBroker';
 import {Task} from '../models/Task';
+import {inject} from 'aurelia-framework';
 
+@inject(StorageBroker)
 export class TaskService {
-  static inject() {return [StorageBroker]}
   constructor(storage) {
     this.storage = storage;
   }

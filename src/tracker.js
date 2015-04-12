@@ -1,8 +1,9 @@
 import {Task} from './models/Task';
 import {TaskService} from './services/TaskService';
+import {inject} from 'aurelia-framework';
 
+@inject(TaskService)
 export class Tracker{
-  static inject() {return [TaskService];}
   constructor(service){
     this.service = service;
     this.newTask = new Task();

@@ -1,8 +1,7 @@
 .form-control {
-  padding: $margin-default;
   font-size: 1em;
 
   & + .form-control {
-    margin-left: $margin-default;
+    margin-left: $spacing-default;
   }
 }

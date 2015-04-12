@@ -4,10 +4,11 @@
 }
 
 .btn {
-  @include button-color($accent-color);
+  @include button-color($success-color);
   border-radius: 0;
   margin: 0;
-  padding: $margin-default $margin-default * 2;
+  padding: $spacing-default $spacing-default * 2;
+  cursor: pointer;
 }
 
 .btn-danger {

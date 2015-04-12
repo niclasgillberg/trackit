@@ -1,0 +1,85 @@
+.task {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: $spacing-default;
+  border: 1px solid hsl(0,0,70);
+
+  .btn {
+    @extend %task-btn;
+  }
+}
+
+.task-title {
+  flex-grow: 3;
+}
+
+.task-category {
+  flex-grow: 2;
+  margin-right: $spacing-default;
+}
+
+.task-duration {
+  flex-grow: 1;
+}
+
+%task-btn {
+  position: relative;
+  display: inline-block;
+  width: $spacing-default * 12;
+  margin-top: -$spacing-default - 1;
+  margin-right: -$spacing-default - 1;
+  margin-bottom: -$spacing-default - 1;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 100%;
+  font-size: 1.1em;
+  text-shadow: 0 1px 0 hsla(0, 0, 100, 0.3);
+}
+
+.new-task input[type=text] {
+  
+}
+
+.new-task-btn {
+  @extend %task-btn;
+}
+
+.current-task {
+
+  margin: $spacing-default 0;
+  line-height: 1.3em;
+
+  .btn-stop {
+    @extend .btn-danger;
+  }
+
+  .task-title {
+    display: inline-block;
+    font-size: 1.3em;
+  }
+
+  .task-category {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  .task-duration {
+    display: inline-block;
+    font-size: 1.3em;
+  }
+}
+
+.header-finished-tasks {
+  text-align: center;
+}
+
+.finished-tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .task {
+    margin-bottom: $spacing-default;
+  }
+}

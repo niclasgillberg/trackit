@@ -1,7 +1,7 @@
-import {All} from 'aurelia-framework';
+import {All, inject} from 'aurelia-framework';
 
+@inject(All.of('storageProvider'))
 export class StorageBroker {
-  static inject() { return [All.of('storageProvider')]; };
   constructor(storageProviders) {
     this.storageProvider = storageProviders.filter((x) => x.canRun())[0];
   }

@@ -1,20 +1,27 @@
 <template>
-  <section>
-    <h2>${heading}</h2>
+  <require from="./_components/SubtleInput"></require>
 
-    <form class="new-task" submit.delegate="startTask()" role="form">
-    <input type="text" value.bind="newTask.title" class="form-control new-task-title" placeholder="What's your task?">
-      <input type="text" value.bind="newTask.category" class="form-control new-task-category" placeholder="Category?">
-      <button type="submit" class="btn new-task-btn">Submit</button>
+  <section>
+    <form class="task new-task" submit.delegate="startTask()" role="form">
+
+      <subtle-input type="text" value.two-way="newTask.title" class="form-control task-title new-task-title" placeholder="What's your task?"></subtle-input>
+      <subtle-input type="text" value.two-way="newTask.category" class="form-control task-category new-task-category" placeholder="Category?"></subtle-input>
+      <button type="submit" class="btn new-task-btn"><span class="fa fa-play"></span></button>
     </form>
     
-    <div class="current-task" if.bind="currentTask">
-      ${currentTask.title} (${currentTask.category}) -> ${currentTask.duration | duration:'HH:mm:ss'}
-      <button type="button" class="btn btn-danger" click.delegate="stopTask()">Stop it!</button>
+    <div class="task current-task" if.bind="currentTask">
+      <span class="task-title">${currentTask.title}</span>
+      <span class="task-category">${currentTask.category}</span>
+      <span class="task-duration">${currentTask.duration | duration:'HH:mm:ss'}</span>
+      <button type="button" class="btn btn-stop" click.delegate="stopTask()"><span class="fa fa-stop"></span></button>
     </div>
-    <ul if.bind="finishedTasks.length">
-      <li repeat.for="task of finishedTasks | sort:'startTime':'number':'descending'">
-        ${task.title} (${task.category}) -> ${task.duration | duration:'HH:mm:ss'}
+    <h3 class="header-finished-tasks">Finished tasks</h3>
+    <ul class="finished-tasks" if.bind="finishedTasks.length">
+      <li class="task" repeat.for="task of finishedTasks | sort:'startTime':'number':'descending'">
+        <span class="task-title">${task.title}</span>
+        <span class="task-category">${task.category}</span>
+        <span class="task-duration">${task.duration | duration:'HH:mm:ss'}</span>
+        <button type="button" class="btn btn-restart" click.delegate="$parent.restartTask(task)"><span class="fa fa-retweet"></span></button>
       </li>
     </ul>
   </section>

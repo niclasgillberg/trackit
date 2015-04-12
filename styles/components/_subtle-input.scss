@@ -1,0 +1,31 @@
+.subtle-input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  input {
+    display: inline-block;
+    width: 75%;
+    font-size: 1.5em;
+    background: inherit;
+    border: none;
+    position: relative;
+    padding: 5px;
+    color: #666;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  &::before {
+    content: "";
+    border: 1px solid hsla(0, 0, 50, 0.5);
+    border-top: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+  }
+}

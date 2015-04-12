@@ -1,5 +1,6 @@
-import {Metadata} from 'aurelia-framework';
+import {singleton} from 'aurelia-framework';
 
+@singleton('storageProvider')
 export class LocalStorageProvider {
   static metadata() {
     return Metadata.singleton('storageProvider');

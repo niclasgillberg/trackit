@@ -7,8 +7,8 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  padding-left: $margin-default * 3;
-  padding-right: $margin-default * 3;
+  padding-left: $spacing-default * 3;
+  padding-right: $spacing-default * 3;
   height: $navbar-height;
   background: hsl(0,0,20);
 
@@ -27,25 +27,25 @@
 .navbar-nav {
   display: inline-block;
   margin: 0;
-  margin-left: $margin-default * 3;
+  margin-left: $spacing-default * 3;
   padding: 0;
   list-style: none;
 
   .nav-item {
     display: inline-block;
-    margin: 0 $margin-default * 2;
+    margin: 0 $spacing-default * 2;
   }
 }
 
 .navbar-loader {
   margin: 0;
-  margin-left: -($margin-default * 3);
-  margin-top: -($margin-default);
+  margin-left: -($spacing-default * 3);
+  margin-top: -($spacing-default);
   padding: 0;
   list-style: none;
 
   .loader {
-    $size: $margin-default / 2;
+    $size: $spacing-default / 2;
     position: relative;
     height: $size;
     text-align: center;
@@ -56,7 +56,7 @@
       background-color: $accent-color;
 
       position: relative;
-      top: -($margin-default) * 1.25;
+      top: -($spacing-default) * 1.25;
       border-radius: 100%;
       display: inline-block;
       animation: bouncedelay 1.4s infinite ease-in-out;

@@ -20,24 +20,24 @@ body {
   margin: 0 16px;
   padding: 8px;
   min-height: 100vh;
-  padding-top: 64px;
+  padding-top: 72px;
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
   background: white; }
 
 .btn {
-  border: 1px solid #f0b400;
-  background: #ffbf00;
+  border: 1px solid #3cb43c;
+  background: #40bf40;
   border-radius: 0;
   margin: 0;
-  padding: 8px 16px; }
+  padding: 8px 16px;
+  cursor: pointer; }
 
-.btn-danger {
+.btn-danger, .current-task .btn-stop {
   border: 1px solid #f02800;
   background: #ff2b00; }
 
 .form-control {
-  padding: 8px;
   font-size: 1em; }
   .form-control + .form-control {
     margin-left: 8px; }
@@ -149,7 +149,7 @@ body {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
-.new-task {
+.task {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -159,30 +159,82 @@ body {
   padding: 8px;
   border: 1px solid #b3b3b3; }
 
-.new-task-title {
+.task-title {
   -webkit-box-flex: 3;
   -webkit-flex-grow: 3;
       -ms-flex-positive: 3;
           flex-grow: 3; }
 
-.new-task-category {
+.task-category {
   -webkit-box-flex: 2;
   -webkit-flex-grow: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
   margin-right: 8px; }
 
-.new-task-btn {
-  position: relative;
-  display: inline-block;
+.task-duration {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
-          flex-grow: 1;
+          flex-grow: 1; }
+
+.task .btn, .new-task-btn {
+  position: relative;
+  display: inline-block;
+  width: 96px;
   margin-top: -9px;
   margin-right: -9px;
   margin-bottom: -9px;
   padding-top: 0;
   padding-bottom: 0;
   line-height: 100%;
-  font-size: 1.1em; }
+  font-size: 1.1em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3); }
+
+.current-task {
+  margin: 8px 0;
+  line-height: 1.3em; }
+  .current-task .task-title {
+    display: inline-block;
+    font-size: 1.3em; }
+  .current-task .task-category {
+    display: inline-block;
+    vertical-align: baseline; }
+  .current-task .task-duration {
+    display: inline-block;
+    font-size: 1.3em; }
+
+.header-finished-tasks {
+  text-align: center; }
+
+.finished-tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .finished-tasks .task {
+    margin-bottom: 8px; }
+
+.subtle-input {
+  position: relative;
+  display: inline-block;
+  width: 100%; }
+  .subtle-input input {
+    display: inline-block;
+    width: 75%;
+    font-size: 1.5em;
+    background: inherit;
+    border: none;
+    position: relative;
+    padding: 5px;
+    color: #666; }
+  .subtle-input input:focus {
+    outline: none; }
+  .subtle-input::before {
+    content: "";
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-top: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px; }
