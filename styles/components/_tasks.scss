@@ -1,3 +1,5 @@
+$task-btn-width: $spacing-default * 12;
+
 .task {
   position: relative;
   display: flex;
@@ -12,15 +14,19 @@
 
 .task-title {
   flex-grow: 3;
+  width: 70%;
 }
 
 .task-category {
   flex-grow: 2;
+  width: 30%;
   margin-right: $spacing-default;
 }
 
 .task-duration {
-  flex-grow: 1;
+  padding-right: $spacing-default;
+  width: $spacing-default * 15;
+  text-align: right;
 }
 
 %task-btn {
@@ -34,11 +40,13 @@
   padding-bottom: 0;
   line-height: 100%;
   font-size: 1.1em;
-  text-shadow: 0 1px 0 hsla(0, 0, 100, 0.3);
+  text-shadow: 0 1px 1px hsla(0, 0, 100, 0.3);
 }
 
-.new-task input[type=text] {
-  
+.new-task {
+  .task-category {
+    width: calc(30% + #{$spacing-default * 18});
+  }
 }
 
 .new-task-btn {
@@ -46,9 +54,9 @@
 }
 
 .current-task {
-
   margin: $spacing-default 0;
   line-height: 1.3em;
+  border-color: hsl(0,0, 90);
 
   .btn-stop {
     @extend .btn-danger;
@@ -81,5 +89,6 @@
 
   .task {
     margin-bottom: $spacing-default;
+    border-color: hsl(0,0, 90);
   }
 }
