@@ -1,18 +1,18 @@
 System.register([], function (_export) {
-  _export("configure", configure);
+  _export('configure', configure);
 
   function configure(aurelia) {
-    aurelia.use.defaultBindingLanguage().defaultResources().router().eventAggregator().plugin("./value_converters/index").plugin("./providers/storage/index");
+    aurelia.use.defaultBindingLanguage().defaultResources().router().eventAggregator().plugin('./value_converters/index').plugin('./providers/storage/index');
 
     aurelia.start().then(function (a) {
-      return a.setRoot("app", document.body);
+      return a.setRoot('app', document.body);
     });
   }
 
   return {
     setters: [],
     execute: function () {
-      "use strict";
+      'use strict';
     }
   };
 });

@@ -1,5 +1,6 @@
-import {Behavior} from 'aurelia-framework';
+import {customElement, bindable} from 'aurelia-framework';
 
+@customElement("nav-bar")
 export class NavBar {
-  static metadata(){ return Behavior.withProperty('router'); }
+  @bindable router = null;
 }

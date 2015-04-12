@@ -1,100 +1,101 @@
-System.register(["moment"], function (_export) {
-  var moment, _createClass, _classCallCheck, SortValueConverter;
+System.register(['moment'], function (_export) {
+  var moment, _classCallCheck, _createClass, SortValueConverter;
 
   return {
     setters: [function (_moment) {
-      moment = _moment["default"];
+      moment = _moment['default'];
     }],
     execute: function () {
-      "use strict";
+      'use strict';
 
-      _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-      SortValueConverter = _export("SortValueConverter", (function () {
+      SortValueConverter = (function () {
         function SortValueConverter() {
           _classCallCheck(this, SortValueConverter);
         }
 
-        _createClass(SortValueConverter, {
-          toView: {
-            value: function toView(array, propertyName) {
-              var comparison = arguments[2] === undefined ? "ordinalIgnoreCase" : arguments[2];
-              var direction = arguments[3] === undefined ? "ascending" : arguments[3];
+        _createClass(SortValueConverter, [{
+          key: 'toView',
+          value: function toView(array, propertyName) {
+            var comparison = arguments[2] === undefined ? 'ordinalIgnoreCase' : arguments[2];
+            var direction = arguments[3] === undefined ? 'ascending' : arguments[3];
 
-              var directionFactor = direction === "ascending" ? 1 : -1,
-                  comparer = this[comparison + "Comparison"];
-              if (propertyName === undefined) {
-                return array.sort(function (a, b) {
-                  return comparer(a, b) * directionFactor;
-                });
-              }return array.sort(function (a, b) {
-                return comparer(a[propertyName], b[propertyName]) * directionFactor;
+            var directionFactor = direction === 'ascending' ? 1 : -1,
+                comparer = this[comparison + 'Comparison'];
+            if (propertyName === undefined) {
+              return array.sort(function (a, b) {
+                return comparer(a, b) * directionFactor;
               });
-            }
-          },
-          ordinalIgnoreCaseComparison: {
-            value: function ordinalIgnoreCaseComparison(a, b) {
-              if ((a === null || a === undefined) && (b === null || b === undefined)) {
-                return 0;
-              }if (a === null || a === undefined) {
-                return -1;
-              }if (b === null || b === undefined) {
-                return 1;
-              }a = a.toString().toLowerCase();
-              b = b.toString().toLowerCase();
-              if (a < b) {
-                return -1;
-              }if (a > b) {
-                return 1;
-              }return 0;
-            }
-          },
-          ordinalComparison: {
-            value: function ordinalComparison(a, b) {
-              if ((a === null || a === undefined) && (b === null || b === undefined)) {
-                return 0;
-              }if (a === null || a === undefined) {
-                return -1;
-              }if (b === null || b === undefined) {
-                return 1;
-              }a = a.toString();
-              b = b.toString();
-              if (a < b) {
-                return -1;
-              }if (a > b) {
-                return 1;
-              }return 0;
-            }
-          },
-          dateComparison: {
-            value: function dateComparison(a, b) {
-              if ((a === null || a === undefined) && (b === null || b === undefined)) {
-                return 0;
-              }if (a === null || a === undefined) {
-                return -1;
-              }if (b === null || b === undefined) {
-                return 1;
-              }return moment(b).diff(moment(a));
-            }
-          },
-          numberComparison: {
-            value: function numberComparison(a, b) {
-              if ((a === null || a === undefined) && (b === null || b === undefined)) {
-                return 0;
-              }if (a === null || a === undefined) {
-                return -1;
-              }if (b === null || b === undefined) {
-                return 1;
-              }return a - b;
-            }
+            }return array.sort(function (a, b) {
+              return comparer(a[propertyName], b[propertyName]) * directionFactor;
+            });
           }
-        });
+        }, {
+          key: 'ordinalIgnoreCaseComparison',
+          value: function ordinalIgnoreCaseComparison(a, b) {
+            if ((a === null || a === undefined) && (b === null || b === undefined)) {
+              return 0;
+            }if (a === null || a === undefined) {
+              return -1;
+            }if (b === null || b === undefined) {
+              return 1;
+            }a = a.toString().toLowerCase();
+            b = b.toString().toLowerCase();
+            if (a < b) {
+              return -1;
+            }if (a > b) {
+              return 1;
+            }return 0;
+          }
+        }, {
+          key: 'ordinalComparison',
+          value: function ordinalComparison(a, b) {
+            if ((a === null || a === undefined) && (b === null || b === undefined)) {
+              return 0;
+            }if (a === null || a === undefined) {
+              return -1;
+            }if (b === null || b === undefined) {
+              return 1;
+            }a = a.toString();
+            b = b.toString();
+            if (a < b) {
+              return -1;
+            }if (a > b) {
+              return 1;
+            }return 0;
+          }
+        }, {
+          key: 'dateComparison',
+          value: function dateComparison(a, b) {
+            if ((a === null || a === undefined) && (b === null || b === undefined)) {
+              return 0;
+            }if (a === null || a === undefined) {
+              return -1;
+            }if (b === null || b === undefined) {
+              return 1;
+            }return moment(b).diff(moment(a));
+          }
+        }, {
+          key: 'numberComparison',
+          value: function numberComparison(a, b) {
+            if ((a === null || a === undefined) && (b === null || b === undefined)) {
+              return 0;
+            }if (a === null || a === undefined) {
+              return -1;
+            }if (b === null || b === undefined) {
+              return 1;
+            }return a - b;
+          }
+        }]);
 
         return SortValueConverter;
-      })());
+      })();
+
+      _export('SortValueConverter', SortValueConverter);
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZhbHVlX2NvbnZlcnRlcnMvU29ydC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO01BQU8sTUFBTSxpQ0FFQSxrQkFBa0I7Ozs7QUFGeEIsWUFBTTs7Ozs7Ozs7O0FBRUEsd0JBQWtCO2lCQUFsQixrQkFBa0I7Z0NBQWxCLGtCQUFrQjs7O3FCQUFsQixrQkFBa0I7QUFDN0IsZ0JBQU07bUJBQUEsZ0JBQUMsS0FBSyxFQUFFLFlBQVksRUFBNkQ7a0JBQTNELFVBQVUsZ0NBQUcsbUJBQW1CO2tCQUFFLFNBQVMsZ0NBQUcsV0FBVzs7QUFDbkYsa0JBQUksZUFBZSxHQUFHLFNBQVMsS0FBSyxXQUFXLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQztrQkFDcEQsUUFBUSxHQUFHLElBQUksQ0FBQyxVQUFVLEdBQUcsWUFBWSxDQUFDLENBQUM7QUFDL0Msa0JBQUksWUFBWSxLQUFLLFNBQVM7QUFDNUIsdUJBQU8sS0FBSyxDQUFDLElBQUksQ0FBQyxVQUFDLENBQUMsRUFBRSxDQUFDO3lCQUFLLFFBQVEsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLEdBQUcsZUFBZTtpQkFBQSxDQUFDLENBQUM7ZUFBQSxBQUNoRSxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsVUFBQyxDQUFDLEVBQUUsQ0FBQzt1QkFBSyxRQUFRLENBQUMsQ0FBQyxDQUFDLFlBQVksQ0FBQyxFQUFFLENBQUMsQ0FBQyxZQUFZLENBQUMsQ0FBQyxHQUFHLGVBQWU7ZUFBQSxDQUFDLENBQUM7YUFDM0Y7O0FBRUQscUNBQTJCO21CQUFBLHFDQUFDLENBQUMsRUFBRSxDQUFDLEVBQUU7QUFDaEMsa0JBQUksQ0FBQyxDQUFDLEtBQUssSUFBSSxJQUFJLENBQUMsS0FBSyxTQUFTLENBQUEsS0FBTSxDQUFDLEtBQUssSUFBSSxJQUFJLENBQUMsS0FBSyxTQUFTLENBQUEsQUFBQztBQUNwRSx1QkFBTyxDQUFDLENBQUM7ZUFBQSxBQUNYLElBQUksQ0FBQyxLQUFLLElBQUksSUFBSSxDQUFDLEtBQUssU0FB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
+//# sourceMappingURL=data:application/json;base64,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
